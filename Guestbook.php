@@ -44,12 +44,12 @@
                 echo "</table>";
             } else 
 			{
-                echo "Keine Kommentare1";
+                echo "Keine Kommentare";
             }
         } 
 		else 
 		{
-            echo "Keine Kommentare2";
+            echo "Keine Kommentare";
         }
     }
 	
