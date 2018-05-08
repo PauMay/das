@@ -57,6 +57,8 @@
 	{
 		if(isset($_SESSION['nick']))
 		{
+			echo '<form action="Guestbook.php" method="POST">';
+			
 			echo "Logged in as ";
 			echo $_SESSION['nick'];
 			echo '<br/>';
@@ -78,12 +80,12 @@
 				addPost($_POST['kommentar']);
 			}
 			echo 
-				'<form action="Guestbook.php" method="POST">
-					Poste hier deinen Kommentar:
-					<input type="text" name="kommentar"> </br>
-					<button type="submit" name="komm"> posten </button>
+				'Poste hier deinen Kommentar:
+				<input type="text" name="kommentar"> </br>
+				<button type="submit" name="komm"> posten </button>
 				</form>
 			';
+			
 			getPosts();
 		}
 		else
