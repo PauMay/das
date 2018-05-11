@@ -53,6 +53,11 @@
         }
     }
 	
+	// setup google client
+	require_once __DIR__.'/google-api-php-client/vendor/autoload.php';
+	$g_client = new Google_Client();
+	$g_client->setAuthConfigFile('../das_permitted/client_secret.json');
+	
 	if(isset($_SESSION['user']))
 	{
 		if(isset($_SESSION['nick']))
@@ -73,6 +78,15 @@
 				setcookie("name", null, time() - 1);
 				setcookie("pass", null, time() - 1);
 				session_destroy();
+
+				if(isset($_SESSION['google']))
+				{
+					if ($_SESSION['google'])
+					{
+						$g_client->revokeToken(); // google logout
+					}
+				}
+				
 				header("Refresh:0");
 			}
 			if(isset($_POST['komm']))
