@@ -52,9 +52,11 @@ if(isset($pay_load)){
 	// if login was successful, save username and redirect
 	$service = new Google_Service_Oauth2($g_client);
 	$user = $service->userinfo->get();
-	$_SESSION['g_username'] = $user->name;
+	//$_SESSION['g_username'] = $user->name;
+	$_SESSION['user'] = $user->name;
+	$_SESSION['nick'] = $user->name;
 
-	$redirect_uri = 'http://' . $_SERVER['HTTP_HOST'] . '/das/google_test.php';
+	$redirect_uri = 'http://' . $_SERVER['HTTP_HOST'] . '/das/Guestbook.php';
 	header('Location: ' . filter_var($redirect_uri, FILTER_SANITIZE_URL));
 
 }

@@ -90,11 +90,11 @@
 		}
 		else
 		{
-			header('Location: '.'Login.php');
+			header('Location: '.'index.php');
 		}
 	}
 	else
 	{
-		header('Location: '.'Login.php');
+		header('Location: '.'index.php');
 	}
 ?>
