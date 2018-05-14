@@ -33,6 +33,6 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token'])
 		<br/>		
 	<?php echo "<a href='$auth_url'> Login with Google </a>"; ?>
 		<br/>
-		<a href=""> Login http </a>
+		<a href="HttpDigest.php"> Login http </a>
 	</body>
 </html>
