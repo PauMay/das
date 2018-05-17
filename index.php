@@ -28,10 +28,10 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token'])
 		</title>
 	</header>
 	<body>
-		<a href="Login.php"> Login Formular </a>
+		<br/><a href="Login.php">Login via formular</a>
 		<br/>		
-	<?php echo "<a href='$auth_url'> Login with Google </a>"; ?>
+	<?php echo "</br><a href='$auth_url'>Login via Google</a>"; ?>
 		<br/>
-		<a href="HttpDigest.php"> Login http </a>
+		<br/><a href="HttpDigest.php">Login via http digest</a>
 	</body>
 </html>
