@@ -15,7 +15,7 @@
 				</tr>
 				<tr>
 					<td>
-						Passwort: 
+						Password: 
 					</td>
 					<td>
 						<input type="password" name="pass"> </br>
@@ -25,7 +25,7 @@
 					<td>
 					</td>
 					<td>
-						<input type="checkbox" name="merken"> Login merken
+						<input type="checkbox" name="merken"> Remember me
 					</td>
 				</tr>
 				<tr>
@@ -46,7 +46,7 @@
 
 		if(mysqli_connect_errno())
 		{
-			echo "Login fehlgeschlagen";
+			echo "Login failed";
 			print_login();
 			return;
 		}
@@ -76,13 +76,13 @@
 			}
 			else
 			{
-				echo "Login fehlgeschlagen";
+				echo "Login failed";
 				print_login();
 			}
 		}
 		else
 		{
-			echo 'Login fehlgeschlagen';
+			echo 'Login failed';
 			print_login();
 		}
 	}

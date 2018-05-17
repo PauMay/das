@@ -8,7 +8,7 @@
 
 		if(mysqli_connect_errno())
 		{
-			echo "Fehler beim Posten";
+			echo "Error when posting";
 			return;
 		}
 		
@@ -26,7 +26,7 @@
 
 		if(mysqli_connect_errno())
 		{
-			echo "Keine Kommentare";
+			echo "No comments";
 			return;
 		}
 		
@@ -35,21 +35,21 @@
 
         if ($res != false) 
 		{
-            if (mysqli_num_rows($res) >= 1) 
+			if (mysqli_num_rows($res) >= 1) 
 			{
                 echo "<table cellpadding='0' cellspacing='0' id='allPosts'>";
                 while ($posts = mysqli_fetch_object($res)) {
-                    echo htmlentities($posts->userId) . "<br/>" . htmlentities($posts->post). "<br/><br/>";
+                    echo "</br>". htmlentities($posts->userId) . " wrote:</br><i style=font-weight:italic;>" . htmlentities($posts->post). "</i><br/>";
                 }
                 echo "</table>";
             } else 
 			{
-                echo "Keine Kommentare";
+                echo "No comments";
             }
         } 
 		else 
 		{
-            echo "Keine Kommentare";
+            echo "No comments";
         }
     }
 	
@@ -93,10 +93,12 @@
 			{
 				addPost($_POST['kommentar']);
 			}
+			echo '<br/>';
+			echo '<p style="font-size:110%;font-weight:bold;"><u>Guestbook</u></p>';
 			echo 
-				'Poste hier deinen Kommentar:
+				'Post your comment:
 				<input type="text" name="kommentar"> </br>
-				<button type="submit" name="komm"> posten </button>
+				<button type="submit" name="komm"> Post </button>
 				</form>
 			';
 			
