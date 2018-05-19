@@ -1,6 +1,12 @@
 <?php
 	session_start();
 	
+	if (!isset($_SERVER["HTTPS"]) || $_SERVER["HTTPS"] != "on") 
+	{
+        header("Location: https://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]);
+        exit;
+    }
+	
 	function addPost($post) 
 	{
 		require "config.php";
