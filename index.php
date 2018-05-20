@@ -30,8 +30,8 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token'])
 	<body>
 		<br/><a href="Login.php">Login via formular</a>
 		<br/>		
-	<?php echo "</br><a href='$auth_url'>Login via Google</a>"; ?>
-		<br/>
 		<br/><a href="HttpDigest.php">Login via http digest</a>
+		<br/>
+		<?php echo "</br><a href='$auth_url'>Login via Google</a>"; ?>
 	</body>
 </html>

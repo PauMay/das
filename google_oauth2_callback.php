@@ -52,7 +52,6 @@ if(isset($pay_load)){
 	// if login was successful, save username and redirect
 	$service = new Google_Service_Oauth2($g_client);
 	$user = $service->userinfo->get();
-	//$_SESSION['g_username'] = $user->name;
 	$_SESSION['user'] = $user->name;
 	$_SESSION['nick'] = $user->name;
 	$_SESSION['google'] = true;
