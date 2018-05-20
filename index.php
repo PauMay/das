@@ -1,21 +1,29 @@
 <?php
 <<<<<<< HEAD
 /* begin certificate */
+/*
 	$cert = $_SERVER['SSL_CLIENT_VERIFY'];
-echo var_dump($cert)."</br>";
+	echo var_dump($cert)."</br>";
 	$cert2 = $_SERVER['SSL_CLIENT_M_SERIAL'];
-echo var_dump($cert2)."</br>";
+	echo var_dump($cert2)."</br>";
 	$cert3 = $_SERVER['SSL_CLIENT_S_DN_CN'];
-echo var_dump($cert3)."</br>";	
+	echo var_dump($cert3)."</br>";
+	
+	$md5pem = md5($_SERVER['HTTP_SIGNATURECERTCHAINURL']);
+	$md5pem = $md5pem . '.pem';
+
+/	/ If we haven't received a certificate with this URL before, store it as a cached copy
+	if (!file_exists($md5pem)) {
+    file_put_contents($md5pem, file_get_contents($_SERVER['HTTP_SIGNATURECERTCHAINURL']));
+	}
+*/
 /* end certificate */
-=======
+
 if (!isset($_SERVER["HTTPS"]) || $_SERVER["HTTPS"] != "on") 
 	{
         header("Location: https://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]);
         exit;
     }
-
->>>>>>> cd27347412adb3ec70761572e290ab5ee1eb85b5
 
 require_once __DIR__.'/google-api-php-client/vendor/autoload.php';
 
