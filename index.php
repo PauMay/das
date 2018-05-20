@@ -1,4 +1,13 @@
 <?php
+/* begin certificate */
+	$cert = $_SERVER['SSL_CLIENT_VERIFY'];
+echo var_dump($cert)."</br>";
+	$cert2 = $_SERVER['SSL_CLIENT_M_SERIAL'];
+echo var_dump($cert2)."</br>";
+	$cert3 = $_SERVER['SSL_CLIENT_S_DN_CN'];
+echo var_dump($cert3)."</br>";	
+/* end certificate */
+
 require_once __DIR__.'/google-api-php-client/vendor/autoload.php';
 
 // setup google client

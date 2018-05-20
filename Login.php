@@ -1,6 +1,6 @@
 <form action="Login.php" method="POST">
 
-<?php	
+<?php
 	function print_login()
 	{
 		echo '
