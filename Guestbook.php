@@ -80,24 +80,30 @@
 					
 			if (isset($_POST['out'])) 
 			{
-				echo 'logged out';
-				setcookie("name", null, time() - 1);
-				setcookie("pass", null, time() - 1);
-				session_destroy();
-
-				if(isset($_SESSION['google']))
+				if($_POST['csrf'] == $_SESSION['csrf_token']) 
 				{
-					if ($_SESSION['google'])
+					echo 'logged out';
+					setcookie("name", null, time() - 1);
+					setcookie("pass", null, time() - 1);
+					session_destroy();
+
+					if(isset($_SESSION['google']))
 					{
-						$g_client->revokeToken(); // google logout
+						if ($_SESSION['google'])
+						{
+							$g_client->revokeToken(); // google logout
+						}
 					}
-				}
-				
-				header("Refresh:0");
+					
+					header("Refresh:0");
+				}				
 			}
 			if(isset($_POST['komm']))
 			{
-				addPost($_POST['kommentar']);
+				if($_POST['csrf'] == $_SESSION['csrf_token']) 
+				{
+					addPost($_POST['kommentar']);
+				}
 			}
 			echo '<br/>';
 			echo '<p style="font-size:110%;font-weight:bold;"><u>Guestbook</u></p>';
@@ -105,6 +111,7 @@
 				'Post your comment:
 				<input type="text" name="kommentar"> </br>
 				<button type="submit" name="komm"> Post </button>
+				<input type="hidden" name="csrf" value="'.$_SESSION['csrf_token'].'">
 				</form>
 			';
 			

@@ -65,6 +65,7 @@
 				{
 					$_SESSION['user'] = $u->Benutzername;
 					$_SESSION['nick'] = $u->nickname;
+					$_SESSION['csrf_token'] = uniqid('', true);
 					if(isset($_POST['merken']))
 					{
 						setcookie('name', $user, time()+2000, null, null, true);
