@@ -1,11 +1,6 @@
 <?php
 require_once __DIR__.'/google-api-php-client/vendor/autoload.php';
 
-if(!isset($_SESSION))
-{
-	session_start();
-}
-
 // setup google client
 $g_client = new Google_Client();
 $g_client->setAuthConfigFile('../das_permitted/client_secret.json');
@@ -17,6 +12,11 @@ $code = isset($_GET['code']) ? $_GET['code'] : NULL;
 
 if(isset($code)) // authorization code recieved
 {
+	if(!isset($_SESSION))
+	{
+		session_start();
+	}
+	
 	// exchange authorization code for access token
 	try
 	{
@@ -52,7 +52,6 @@ if(isset($pay_load)){
 	// if login was successful, save username and redirect
 	$service = new Google_Service_Oauth2($g_client);
 	$user = $service->userinfo->get();
-	//$_SESSION['g_username'] = $user->name;
 	$_SESSION['user'] = $user->name;
 	$_SESSION['nick'] = $user->name;
 	$_SESSION['google'] = true;
