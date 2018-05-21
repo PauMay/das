@@ -1,4 +1,22 @@
 <?php
+
+/* begin (pseudo) check certificate */
+/*
+	$our_cert_file = file_get_contents('../das_permitted/server.crt');
+	$our_cert = openssl_x509_parse($our_cert_file);
+
+	$sent_cert = $_SERVER['SSL_CLIENT_VERIFY'];
+	
+	// check certificate and compare it with our certificate
+	if (($sent_cert == 'SUCCESS')
+		&& ($_SERVER['SSL_CLIENT_M_SERIAL'] == $our_cert['serialNumber'])
+		&& ($_SERVER['SSL_CLIENT_V_END'] >= strtotime('today'))
+	{
+		// only then do all the rest...
+	}
+*/	
+/* end (pseudo) check certificate  */
+
 require_once __DIR__.'/google-api-php-client/vendor/autoload.php';
 
 // setup google client

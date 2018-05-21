@@ -1,23 +1,21 @@
 <?php
-<<<<<<< HEAD
-/* begin certificate */
-/*
-	$cert = $_SERVER['SSL_CLIENT_VERIFY'];
-	echo var_dump($cert)."</br>";
-	$cert2 = $_SERVER['SSL_CLIENT_M_SERIAL'];
-	echo var_dump($cert2)."</br>";
-	$cert3 = $_SERVER['SSL_CLIENT_S_DN_CN'];
-	echo var_dump($cert3)."</br>";
-	
-	$md5pem = md5($_SERVER['HTTP_SIGNATURECERTCHAINURL']);
-	$md5pem = $md5pem . '.pem';
 
-/	/ If we haven't received a certificate with this URL before, store it as a cached copy
-	if (!file_exists($md5pem)) {
-    file_put_contents($md5pem, file_get_contents($_SERVER['HTTP_SIGNATURECERTCHAINURL']));
+/* begin (pseudo) check certificate */
+/*
+	$our_cert_file = file_get_contents('../das_permitted/server.crt');
+	$our_cert = openssl_x509_parse($our_cert_file);
+
+	$sent_cert = $_SERVER['SSL_CLIENT_VERIFY'];
+	
+	// check certificate and compare it with our certificate
+	if (($sent_cert == 'SUCCESS')
+		&& ($_SERVER['SSL_CLIENT_M_SERIAL'] == $our_cert['serialNumber'])
+		&& ($_SERVER['SSL_CLIENT_V_END'] >= strtotime('today'))
+	{
+		// only then do all the rest...
 	}
-*/
-/* end certificate */
+*/	
+/* end (pseudo) check certificate  */
 
 if (!isset($_SERVER["HTTPS"]) || $_SERVER["HTTPS"] != "on") 
 	{
