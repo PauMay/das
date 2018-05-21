@@ -72,6 +72,7 @@ function hmac_http_auth($realm = "Realm")
 		{ 
 			$_SESSION['user'] = $username;
 			$_SESSION['nick'] = $nickname;
+			$_SESSION['csrf_token'] = uniqid('', true);
 			return TRUE;
 		}
 	}

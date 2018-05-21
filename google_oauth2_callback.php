@@ -73,6 +73,7 @@ if(isset($pay_load)){
 	$_SESSION['user'] = $user->name;
 	$_SESSION['nick'] = $user->name;
 	$_SESSION['google'] = true;
+	$_SESSION['csrf_token'] = uniqid('', true);
 
 	$redirect_uri = 'http://' . $_SERVER['HTTP_HOST'] . '/das/Guestbook.php';
 	header('Location: ' . filter_var($redirect_uri, FILTER_SANITIZE_URL));
